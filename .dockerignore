@@ -1,0 +1,42 @@
+# =========================================================================
+# Artefatos de Build Locais
+# =========================================================================
+# Evita que binários compilados na sua máquina local contaminem o contêiner
+target/
+*.jar
+*.war
+
+# =========================================================================
+# Ferramentas de Build e Wrappers
+# =========================================================================
+# Ignora o Maven Wrapper local, pois o Dockerfile utilizará sua própria camada
+.mvn/
+mvnw
+mvnw.cmd
+
+# =========================================================================
+# Controle de Versão e Configurações de IDEs
+# =========================================================================
+# Arquivos de metadados que não possuem papel em tempo de execução
+.git
+.gitignore
+.gitattributes
+.github/
+.vscode/
+.idea/
+*.iml
+
+# =========================================================================
+# Documentações e Requisitos 
+# =========================================================================
+*.md
+*.pdf
+requisitos_mvp.pdf
+
+# =========================================================================
+# Segurança e Segredos (CRÍTICO)
+# =========================================================================
+# Nunca permita que arquivos contendo variáveis de ambiente locais subam na imagem
+.env
+.env.development
+.env.example
