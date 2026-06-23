@@ -1,0 +1,29 @@
+version: '3.8'
+
+services:
+  postgres-db:
+    image: postgres:15-alpine
+    container_name: petland_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: petland
+    ports:
+      - "9000:5432"
+    volumes:
+      - postgres_petland_data:/var/lib/postgresql/data
+    networks:
+      - petland-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d petland"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_petland_data:
+    name: postgres_petland_volume
+
+networks:
+  petland-network:
+    driver: bridge
